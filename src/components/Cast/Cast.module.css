@@ -1,0 +1,30 @@
+.actorsList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.actorInfo {
+  width: 140px;
+  margin-bottom: 20px;
+}
+
+.actorInfo:not(:last-child) {
+  margin-right: 16px;
+}
+
+.actorAvatar {
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  margin: 0 auto;
+}
+
+.actorName {
+  overflow: hidden;
+  font-size: 16px;
+  margin: 0 auto;
+  padding: 0;
+}

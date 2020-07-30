@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import moviesAPI from '../moviesAPI'
+import moviesAPI from '../moviesAPI';
+import styles from './Cast.module.css'
 
 class Cast extends Component {
   state = {
@@ -14,8 +15,8 @@ class Cast extends Component {
   render() {
     const { cast } = this.state
     return (
-      <ul>
-        {cast.length > 0 && cast.map(actor => (<li key={actor.id}><p>{actor.name}</p><img src={moviesAPI.getImgUrl(actor.profile_path)} alt={actor.name} width='100' height='150' /></li>))}
+      <ul className={styles.actorsList}>
+        {cast.length > 0 && cast.map(actor => (<li className={styles.actorInfo} key={actor.id}><img className={styles.actorAvatar} src={moviesAPI.getImgUrl(actor.profile_path)} alt={actor.name} width='100' /><p className={styles.actorName}>{actor.name}</p></li>))}
       </ul>
     )
   }

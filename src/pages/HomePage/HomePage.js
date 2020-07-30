@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import moviesAPI from '../../components/moviesAPI'
-import { NavLink } from 'react-router-dom'
+import moviesAPI from '../../components/moviesAPI';
+import MoviesList from '../../components/MoviesList'
+
 
 class HomePage extends Component {
   state = {
@@ -12,17 +13,9 @@ class HomePage extends Component {
   }
 
   render() {
+    const { trendMovies } = this.state
     return (
-      <>
-        <ul>
-          {this.state.trendMovies.map(movie => (
-            <li key={movie.id}>
-              <NavLink exact to={`movies/${movie.id}`}>{movie.title}{movie.name}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </>
+      <MoviesList data={trendMovies} />
     )
   }
 }

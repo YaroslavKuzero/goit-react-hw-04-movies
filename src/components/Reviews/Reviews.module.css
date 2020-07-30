@@ -1,0 +1,24 @@
+.reviewsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reviewsItem {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.reviewsAuthor {
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.reviewsContent {
+  margin: 0;
+  padding: 0;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moviesAPI from '../../components/moviesAPI';
-import { NavLink } from 'react-router-dom'
+import MovieList from '../../components/MoviesList'
+import styles from './MoviesPage.module.css'
 
 class MoviesPage extends Component {
   state = {
@@ -18,26 +19,23 @@ class MoviesPage extends Component {
   }
 
   render() {
+    const { result, query } = this.state
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className={styles.page}>
+        <form className={styles.form} onSubmit={this.handleSubmit}>
           <input
             type="text"
-            value={this.state.query}
+            value={query}
             onChange={this.handleChange}
             autoComplete="off"
             placeholder="Search movies"
+            className={styles.input}
           />
-          <button type="submit">
-            <span>Search</span>
+          <button className={styles.button} type="submit">
           </button>
         </form>
-        <ul>
-          {this.state.result.length > 0 && this.state.result.map(movie => (<li key={movie.id}>
-            <NavLink exact to={`${this.props.match.url}/${movie.id}`}>{movie.title}
-            </NavLink>
-          </li>))}
-        </ul>
+
+        <MovieList data={result} />
       </div>
     )
   }

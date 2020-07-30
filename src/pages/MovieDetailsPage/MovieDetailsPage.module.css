@@ -1,0 +1,76 @@
+.movieDetails {
+  display: flex;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(126, 126, 126);
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.movieInfo {
+  width: 300px;
+}
+.movieImg {
+  margin-right: 30px;
+}
+
+.movieTitle {
+  margin: 0 auto;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.movieRelease {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.movieOverview {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.genreList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+.genresText {
+  display: block;
+  border-bottom: solid 1px rgb(126, 126, 126);
+  margin-bottom: 10px;
+}
+.genreItem:not(:last-child) {
+  margin-right: 10px;
+}
+
+.link {
+  display: inline-block;
+  width: 80px;
+  height: 35px;
+  border: solid 1px rgb(126, 126, 126);
+  text-decoration: none;
+  color: #fff;
+  background-color: rgb(126, 126, 126);
+  text-align: center;
+  line-height: 35px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: all ease 200ms;
+  margin-bottom: 20px;
+}
+
+.link:not(:last-child) {
+  margin-right: 10px;
+}
+
+.link:hover {
+  transform: scale(1.1);
+}
+
+.activeLink {
+  background-color: rgb(185, 185, 185);
+  color: lightslategray;
+}

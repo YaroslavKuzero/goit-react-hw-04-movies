@@ -23,7 +23,13 @@ const fetchReviews = (movieId) => {
 }
 
 const getImgUrl = (url) => {
-  return `https://image.tmdb.org/t/p/original${url}`;
+  if (url !== null) {
+    return `https://image.tmdb.org/t/p/original${url}`;
+  }
+
+  return 'http://placebeard.it/g/640/480'
 }
 
 export default { fetchTrendingMovie, fetchDetailsMovie, fetchQuery, fetchCast, fetchReviews, getImgUrl };
+
+
