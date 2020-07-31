@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import moviesAPI from '../moviesAPI';
-import styles from './Cast.module.css'
+import styles from './Cast.module.css';
+import PropTypes from 'prop-types';
 
 class Cast extends Component {
+  static propTypes = {
+    movieId: PropTypes.number.isRequired,
+  }
+
   state = {
     cast: []
   }
@@ -21,5 +26,6 @@ class Cast extends Component {
     )
   }
 }
+
 
 export default Cast;

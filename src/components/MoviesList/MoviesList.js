@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import moviesAPI from '../moviesAPI'
-import styles from './MovieList.module.css'
+import moviesAPI from '../moviesAPI';
+import styles from './MovieList.module.css';
+import PropTypes from 'prop-types';
 
 const MoviesList = ({ data }) => (
   <ul className={styles.movieList}>
@@ -15,5 +16,10 @@ const MoviesList = ({ data }) => (
     ))}
   </ul>
 )
+
+MoviesList.propTypes = {
+  data: PropTypes.array.isRequired,
+}
+
 
 export default MoviesList;
