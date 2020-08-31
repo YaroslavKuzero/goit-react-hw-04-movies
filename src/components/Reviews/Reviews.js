@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moviesAPI from '../moviesAPI';
 import PropTypes from 'prop-types';
-import styles from './Reviews.module.css';
+import s from './Reviews.module.css';
 
 class Reviews extends Component {
   static propTypes = {
@@ -14,15 +14,26 @@ class Reviews extends Component {
 
   componentDidMount() {
     const { movieId } = this.props
-    moviesAPI.fetchReviews(movieId).then(data => this.setState({ reviews: data.results }))
+    moviesAPI.fetchReviews(movieId).then(({ results }) => this.setState({ reviews: results }))
   }
 
   render() {
     const { reviews } = this.state
     return (
-      <ul className={styles.reviewsList}>
-        {reviews.length > 0 ? reviews.map(review => (<li className={styles.reviewsItem} key={review.id}><p className={styles.reviewsAuthor}>{review.author}</p><p className={styles.reviewsContent}>{review.content}</p></li>)) : <p>We have not reviews of choosen movie.</p>}
-      </ul>
+      <>
+        {
+          reviews.length > 0 ? reviews.map(({ id, author, content }) => (
+            <ul className={s.reviewsList}>
+              <li
+                className={s.reviewsItem}
+                key={id}>
+                <p className={s.reviewsAuthor}>{author}</p>
+                <p className={s.reviewsContent}>{content}</p>
+              </li>
+            </ul>))
+            : <p>We have not reviews of choosen movie.</p>
+        }
+      </>
     )
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moviesAPI from '../../components/moviesAPI';
-import MoviesList from '../../components/MoviesList'
+import MoviesList from '../../components/MoviesList';
 
 
 class HomePage extends Component {

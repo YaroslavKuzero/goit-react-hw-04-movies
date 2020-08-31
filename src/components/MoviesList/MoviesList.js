@@ -1,16 +1,24 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import moviesAPI from '../moviesAPI';
-import styles from './MovieList.module.css';
+import s from './MovieList.module.css';
 import PropTypes from 'prop-types';
 
 const MoviesList = ({ data }) => (
-  <ul className={styles.movieList}>
+  <ul className={s.movieList}>
     {data?.length > 0 && data.map(({ id, title, name, poster_path }) => (
-      <li key={id} className={styles.movieItem}>
-        <NavLink className={styles.movieLink} activeClassName={styles.movieActiveLink} exact to={`movies/${id}`}>
-          <img src={moviesAPI.getImgUrl(poster_path)} alt={title} width="140" />
-          <p className={styles.movieTitle}>{title}{name}</p>
+      <li
+        key={id}
+        className={s.movieItem}>
+        <NavLink
+          className={s.movieLink}
+          activeClassName={s.movieActiveLink}
+          exact to={`movies/${id}`}>
+          <img
+            src={moviesAPI.getImgUrl(poster_path)}
+            alt={title}
+            width="140" />
+          <p className={s.movieTitle}>{title}{name}</p>
         </NavLink>
       </li>
     ))}

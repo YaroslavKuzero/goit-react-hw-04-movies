@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moviesAPI from '../moviesAPI';
-import styles from './Cast.module.css';
+import s from './Cast.module.css';
 import PropTypes from 'prop-types';
 
 class Cast extends Component {
@@ -14,18 +14,27 @@ class Cast extends Component {
 
   componentDidMount() {
     const { movieId } = this.props
-    moviesAPI.fetchCast(movieId).then(data => this.setState({ cast: data.cast }))
+    moviesAPI.fetchCast(movieId).then(({ cast }) => this.setState({ cast: cast }))
   }
 
   render() {
     const { cast } = this.state
     return (
-      <ul className={styles.actorsList}>
-        {cast.length > 0 && cast.map(actor => (<li className={styles.actorInfo} key={actor.id}><img className={styles.actorAvatar} src={moviesAPI.getImgUrl(actor.profile_path)} alt={actor.name} width='100' /><p className={styles.actorName}>{actor.name}</p></li>))}
+      <ul className={s.actorsList}>
+        {cast.length > 0 && cast.map(({ id, name, profile_path }) => (
+          <li
+            className={s.actorInfo}
+            key={id}>
+            <img
+              className={s.actorAvatar}
+              src={moviesAPI.getImgUrl(profile_path)}
+              alt={name}
+              width='100' />
+            <p className={s.actorName}>{name}</p>
+          </li>))}
       </ul>
     )
   }
 }
-
 
 export default Cast;
