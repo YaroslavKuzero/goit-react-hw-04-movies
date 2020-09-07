@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import moviesAPI from '../moviesAPI';
 import PropTypes from 'prop-types';
+
+import moviesAPI from '../moviesAPI';
+
 import s from './Reviews.module.css';
 
 class Reviews extends Component {
@@ -19,22 +21,15 @@ class Reviews extends Component {
 
   render() {
     const { reviews } = this.state
-    return (
-      <>
-        {
-          reviews.length > 0 ? reviews.map(({ id, author, content }) => (
-            <ul className={s.reviewsList}>
-              <li
-                className={s.reviewsItem}
-                key={id}>
-                <p className={s.reviewsAuthor}>{author}</p>
-                <p className={s.reviewsContent}>{content}</p>
-              </li>
-            </ul>))
-            : <p>We have not reviews of choosen movie.</p>
-        }
-      </>
-    )
+    return reviews.length > 0 ? <ul className={s.reviewsList}>{reviews.map(({ id, author, content }) => (
+      <li
+        className={s.reviewsItem}
+        key={id}>
+        <p className={s.reviewsAuthor}>{author}</p>
+        <p className={s.reviewsContent}>{content}</p>
+      </li>))}
+    </ul>
+      : <p>We have not reviews of choosen movie.</p>
   }
 }
 

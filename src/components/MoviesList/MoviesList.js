@@ -1,12 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import moviesAPI from '../moviesAPI';
-import s from './MovieList.module.css';
 import PropTypes from 'prop-types';
 
+import moviesAPI from '../moviesAPI';
+
+import s from './MovieList.module.css';
+
 const MoviesList = ({ data }) => (
-  <ul className={s.movieList}>
-    {data?.length > 0 && data.map(({ id, title, name, poster_path }) => (
+  data?.length > 0 && <ul className={s.movieList}>
+    {data.map(({ id, title, name, poster_path }) => (
       <li
         key={id}
         className={s.movieItem}>
@@ -28,6 +30,5 @@ const MoviesList = ({ data }) => (
 MoviesList.propTypes = {
   data: PropTypes.array.isRequired,
 }
-
 
 export default MoviesList;

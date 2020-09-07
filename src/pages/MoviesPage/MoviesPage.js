@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+
 import moviesAPI from '../../components/moviesAPI';
+
 import MovieList from '../../components/MoviesList'
+
 import s from './MoviesPage.module.css'
 
 class MoviesPage extends Component {
@@ -9,8 +12,8 @@ class MoviesPage extends Component {
     result: []
   }
 
-  handleChange = e =>
-    this.setState({ query: e.currentTarget.value });
+  handleChange = ({ currentTarget: { value } }) =>
+    this.setState({ query: value });
 
   handleSubmit = e => {
     const { query } = this.state

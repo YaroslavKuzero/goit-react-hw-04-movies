@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { NavLink, Route } from 'react-router-dom';
+
+import moviesAPI from '../../components/moviesAPI';
+
 import Cast from '../../components/Cast';
 import Reviews from '../../components/Reviews';
-import moviesAPI from '../../components/moviesAPI';
-import { NavLink, Route } from 'react-router-dom';
+
 import s from './MovieDetailsPage.module.css';
 
 class MovieDetailsPage extends Component {
@@ -18,7 +21,7 @@ class MovieDetailsPage extends Component {
   render() {
     const { poster_path, title, release_date, overview, genres } = this.state.movie
     return (
-      <div>
+      <>
         <div className={s.movieDetails}>
           <img className={s.movieImg} src={moviesAPI.getImgUrl(poster_path)} alt={title} width='300' />
           <div className={s.movieInfo}>
@@ -54,7 +57,7 @@ class MovieDetailsPage extends Component {
             return <Reviews {...props} movieId={movieId} />;
           }}
         />
-      </div>
+      </>
     )
   }
 }

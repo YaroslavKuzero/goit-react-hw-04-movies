@@ -1,5 +1,6 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import Header from './Header';
 import Spinner from './Loader';
 
