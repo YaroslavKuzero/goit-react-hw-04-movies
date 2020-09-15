@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import moviesAPI from '../../components/moviesAPI';
+import moviesAPI from '../../services/moviesAPI';
 
 import MovieList from '../../components/MoviesList'
 

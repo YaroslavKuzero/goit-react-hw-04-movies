@@ -2,12 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import moviesAPI from '../moviesAPI';
+import moviesAPI from '../../services/moviesAPI';
 
 import s from './MovieList.module.css';
 
 const MoviesList = ({ data }) => (
-  data?.length > 0 && <ul className={s.movieList}>
+  data?.length && <ul className={s.movieList}>
     {data.map(({ id, title, name, poster_path }) => (
       <li
         key={id}

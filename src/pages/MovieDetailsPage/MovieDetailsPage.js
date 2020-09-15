@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 
-import moviesAPI from '../../components/moviesAPI';
+import moviesAPI from '../../services/moviesAPI';
 
 import Cast from '../../components/Cast';
 import Reviews from '../../components/Reviews';

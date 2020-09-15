@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import moviesAPI from '../moviesAPI';
+import moviesAPI from '../../services/moviesAPI';
 
 import s from './Reviews.module.css';
 
