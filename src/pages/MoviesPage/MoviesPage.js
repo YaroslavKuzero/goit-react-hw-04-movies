@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import moviesAPI from '../../services/moviesAPI';
+import { fetchQuery } from '../../services/moviesAPI';
 
 import MovieList from '../../components/MoviesList'
 
@@ -15,11 +15,11 @@ class MoviesPage extends Component {
   handleChange = ({ currentTarget: { value } }) =>
     this.setState({ query: value });
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     const { query } = this.state
     e.preventDefault()
-    moviesAPI.fetchQuery(query).then(({ results }) => this.setState({ result: results }))
-    this.setState({ query: '' })
+    const { results } = await fetchQuery(query)
+    this.setState({ result: results, query: '' })
   }
 
   render() {
@@ -35,8 +35,7 @@ class MoviesPage extends Component {
             placeholder="Search movies"
             className={s.input}
           />
-          <button className={s.button} type="submit">
-          </button>
+          <button className={s.button} type="submit" />
         </form>
 
         <MovieList data={result} />

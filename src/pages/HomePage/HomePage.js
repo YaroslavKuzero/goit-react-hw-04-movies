@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import moviesAPI from '../../services/moviesAPI';
+import { fetchTrendingMovie } from '../../services/moviesAPI';
 
 import MoviesList from '../../components/MoviesList';
 
@@ -9,8 +9,11 @@ class HomePage extends Component {
     trendMovies: [],
   }
 
-  componentDidMount() {
-    moviesAPI.fetchTrendingMovie().then(data => this.setState({ trendMovies: data }))
+  async componentDidMount() {
+    const data = await fetchTrendingMovie()
+    if (data) {
+      this.setState({ trendMovies: data })
+    }
   }
 
   render() {

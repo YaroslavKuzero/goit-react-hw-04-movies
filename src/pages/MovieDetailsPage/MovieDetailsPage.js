@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 
-import moviesAPI from '../../services/moviesAPI';
+import { fetchDetailsMovie, getImgUrl } from '../../services/moviesAPI';
 
 import Cast from '../../components/Cast';
 import Reviews from '../../components/Reviews';
@@ -13,9 +13,12 @@ class MovieDetailsPage extends Component {
     movie: {},
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { movieId } = this.props.match.params;
-    moviesAPI.fetchDetailsMovie(movieId).then(data => this.setState({ movie: data }))
+    const data = await fetchDetailsMovie(movieId)
+    if (data) {
+      this.setState({ movie: data })
+    }
   }
 
   render() {
@@ -23,7 +26,7 @@ class MovieDetailsPage extends Component {
     return (
       <>
         <div className={s.movieDetails}>
-          <img className={s.movieImg} src={moviesAPI.getImgUrl(poster_path)} alt={title} width='300' />
+          <img className={s.movieImg} src={getImgUrl(poster_path)} alt={title} width='300' />
           <div className={s.movieInfo}>
             <h3 className={s.movieTitle}>{title}</h3>
             <p className={s.movieRelease}>Date of release: {release_date}</p>

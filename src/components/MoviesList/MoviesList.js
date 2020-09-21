@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import moviesAPI from '../../services/moviesAPI';
+import { getImgUrl } from '../../services/moviesAPI';
 
 import s from './MovieList.module.css';
 
@@ -17,7 +17,7 @@ const MoviesList = ({ data }) => (
           activeClassName={s.movieActiveLink}
           exact to={`movies/${id}`}>
           <img
-            src={moviesAPI.getImgUrl(poster_path)}
+            src={getImgUrl(poster_path)}
             alt={title}
             width="140" />
           <p className={s.movieTitle}>{title}{name}</p>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import moviesAPI from '../../services/moviesAPI';
+import { fetchCast, getImgUrl } from '../../services/moviesAPI';
 
 import s from './Cast.module.css';
 
@@ -14,21 +14,22 @@ class Cast extends Component {
     cast: []
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { movieId } = this.props
-    moviesAPI.fetchCast(movieId).then(({ cast }) => this.setState({ cast: cast }))
+    const { cast } = await fetchCast(movieId)
+    this.setState({ cast: cast })
   }
 
   render() {
     const { cast } = this.state
-    return cast.length > 0 && <ul className={s.actorsList}>
+    return cast.length && <ul className={s.actorsList}>
       {cast.map(({ id, name, profile_path }) => (
         <li
           className={s.actorInfo}
           key={id}>
           <img
             className={s.actorAvatar}
-            src={moviesAPI.getImgUrl(profile_path)}
+            src={getImgUrl(profile_path)}
             alt={name}
             width='100' />
           <p className={s.actorName}>{name}</p>

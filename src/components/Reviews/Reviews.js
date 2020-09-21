@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import moviesAPI from '../../services/moviesAPI';
+import { fetchReviews } from '../../services/moviesAPI';
 
 import s from './Reviews.module.css';
 
@@ -14,14 +14,15 @@ class Reviews extends Component {
     reviews: []
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { movieId } = this.props
-    moviesAPI.fetchReviews(movieId).then(({ results }) => this.setState({ reviews: results }))
+    const { results } = await fetchReviews(movieId)
+    this.setState({ reviews: results })
   }
 
   render() {
     const { reviews } = this.state
-    return reviews.length > 0 ? <ul className={s.reviewsList}>{reviews.map(({ id, author, content }) => (
+    return reviews.length ? <ul className={s.reviewsList}>{reviews.map(({ id, author, content }) => (
       <li
         className={s.reviewsItem}
         key={id}>

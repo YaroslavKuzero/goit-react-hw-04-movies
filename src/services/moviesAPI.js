@@ -5,55 +5,50 @@ axios.defaults.baseURL = 'https://api.themoviedb.org';
 
 async function fetchTrendingMovie() {
   try {
-    const response = await axios.get(`/3/trending/all/day?api_key=${apiKey}`);
-    const { results } = response.data;
-    return results;
+    const { data } = await axios.get(`/3/trending/all/day?api_key=${apiKey}`);
+    return data.results;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 
 };
 
 async function fetchDetailsMovie(id) {
   try {
-    const response = await axios.get(`/3/movie/${id}?api_key=${apiKey}`)
-    const { data } = response
+    const { data } = await axios.get(`/3/movie/${id}?api_key=${apiKey}`)
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 
 }
 
 async function fetchQuery(query) {
   try {
-    const response = await axios.get(`/3/search/movie?query=${query}&api_key=${apiKey}&page=1`);
-    const { data } = response
+    const { data } = await axios.get(`/3/search/movie?query=${query}&api_key=${apiKey}&page=1`);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 
 }
 
 async function fetchCast(movieId) {
   try {
-    const response = await axios.get(`/3/movie/${movieId}/credits?api_key=${apiKey}`);
-    const { data } = response
+    const { data } = await axios.get(`/3/movie/${movieId}/credits?api_key=${apiKey}`);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 
 }
 
 async function fetchReviews(movieId) {
   try {
-    const response = await axios.get(`/3/movie/${movieId}/reviews?api_key=${apiKey}&page=1`);
-    const { data } = response
+    const { data } = await axios.get(`/3/movie/${movieId}/reviews?api_key=${apiKey}&page=1`);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 
 }
@@ -66,6 +61,6 @@ const getImgUrl = (url) => {
   return 'http://placebeard.it/g/640/480'
 }
 
-export default { fetchTrendingMovie, fetchDetailsMovie, fetchQuery, fetchCast, fetchReviews, getImgUrl };
+export { fetchTrendingMovie, fetchDetailsMovie, fetchQuery, fetchCast, fetchReviews, getImgUrl };
 
 
